@@ -1,0 +1,16 @@
+include LICENSE
+include README.rst
+recursive-include cakephp_theme *.*
+recursive-include cakephp_theme *.conf
+
+recursive-include cakephp_theme *.css
+recursive-include cakephp_theme *.html
+recursive-include cakephp_theme *.js
+recursive-include cakephp_theme *.png
+
+recursive-include cakephp_theme *.eot
+recursive-include cakephp_theme *.otf
+recursive-include cakephp_theme *.svg
+recursive-include cakephp_theme *.ttf
+recursive-include cakephp_theme *.woff
+recursive-include cakephp_theme *.woff2
