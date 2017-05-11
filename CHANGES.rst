@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.0.2 (2017-05-11)
+------------------
+
+Fix
+~~~
+
+- Add empty license for packaging. [Jose Diaz-Gonzalez]
+
+- Ensure the extension for rtd is correct. [Jose Diaz-Gonzalez]
+
 1.0.1 (2017-05-11)
 ------------------
 
