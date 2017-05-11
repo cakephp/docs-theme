@@ -942,7 +942,6 @@ App.InlineSearch = (function () {
           suggestion: function(item) {
             var div = $('<div></div>');
             var link = $('<a></a>');
-            link.attr('href', base + item.url);
             if (item.title) {
               link.append('<strong>' + item.title + '</strong><br />');
             }
@@ -950,8 +949,10 @@ App.InlineSearch = (function () {
             var text = [];
             if (item.hasOwnProperty('html')) {
               text = item.html;
+              link.attr('href', item.url);
             } else {
               text = item.contents;
+              link.attr('href', base + item.url);
             }
             if (text.join) {
               text = text.join("\n");
@@ -1321,15 +1322,16 @@ App.Search = (function () {
       $.each(results, function(index, item) {
         var li = $('<li></li>');
         var link = $('<a></a>');
-        link.attr('href', base + item.url);
         if (item.title) {
           link.append('<strong>' + item.title + '</strong><br />');
         }
         var span = $('<span></span>');
         if (item.hasOwnProperty('html')) {
           span.html(item.html.join("\n"));
+          link.attr('href', item.url);
         } else {
           span.text(item.contents.join("\n"));
+          link.attr('href', base + item.url);
         }
         link.append(span);
         li.append(link);
