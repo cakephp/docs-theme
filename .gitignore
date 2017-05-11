@@ -4,3 +4,4 @@
 *.whl
 build
 docs/_build
+README
