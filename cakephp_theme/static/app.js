@@ -949,7 +949,7 @@ App.InlineSearch = (function () {
             var text = [];
             if (item.hasOwnProperty('html')) {
               text = item.html;
-              link.attr('href', item.url);
+              link.attr('href', item.url + '.html');
             } else {
               text = item.contents;
               link.attr('href', base + item.url);
@@ -1328,7 +1328,7 @@ App.Search = (function () {
         var span = $('<span></span>');
         if (item.hasOwnProperty('html')) {
           span.html(item.html.join("\n"));
-          link.attr('href', item.url);
+          link.attr('href', item.url + '.html');
         } else {
           span.text(item.contents.join("\n"));
           link.attr('href', base + item.url);
