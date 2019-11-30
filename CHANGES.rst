@@ -1,6 +1,18 @@
 Changelog
 =========
 
+1.1.1 (2019-11-29)
+------------------
+------------------------
+
+Fix
+~~~
+- Correct changelog output. [Jose Diaz-Gonzalez]
+
+Other
+~~~~~
+- Docs: increase version of gitchangelog. [Jose Diaz-Gonzalez]
+
 
 1.1.0 (2019-11-30)
 ------------------
