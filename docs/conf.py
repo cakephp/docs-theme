@@ -14,8 +14,8 @@ maintainer = u'cakephp'
 project = u'doc-theme'
 project_pretty_name = u'CakePHP Doc Theme'
 copyright = u'%d, CakePHP' % datetime.datetime.now().year
-version = '1.1.1'
-release = '1.1.1'
+version = '1.1.2'
+release = '1.1.2'
 html_title = 'CakePHP Doc Theme'
 html_context = {
     'maintainer': maintainer,
