@@ -1,9 +1,18 @@
 Changelog
 =========
 
-1.1.2 (2019-11-29)
+1.1.3 (2019-11-29)
 ------------------
 ------------------------
+
+Fix
+~~~
+- Strip newlines and properly respond with _just_ the content requested.
+  [Jose Diaz-Gonzalez]
+
+
+1.1.2 (2019-11-30)
+------------------
 - Chore: increase Jinja2 version. [Jose Diaz-Gonzalez]
 
 
