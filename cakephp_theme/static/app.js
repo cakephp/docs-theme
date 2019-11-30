@@ -870,6 +870,12 @@ App.config = {
   version: 'latest'
 };
 
+App.stripHtml = function(html) {
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent || tmp.innerText || "";
+}
+
 App.Book = (function() {
   function init() {
     // Show back to contents button.
@@ -918,8 +924,7 @@ App.InlineSearch = (function () {
           results.push({
             title: res[i].title,
             url: res[i].link,
-            contents: highlight["sections.content"],
-            html: highlight["sections.content"][0]
+            contents: App.stripHtml(highlight["sections.content"][0])
           })
         }
       } else if (response.hasOwnProperty('results')) {
@@ -1302,8 +1307,7 @@ App.Search = (function () {
           results.push({
             title: res[i].title,
             url: res[i].link,
-            contents: highlight["sections.content"],
-            html: highlight["sections.content"][0]
+            contents: [App.stripHtml(highlight["sections.content"][0])]
           })
         }
       } else if (response.hasOwnProperty('results')) {
