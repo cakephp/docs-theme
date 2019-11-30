@@ -911,7 +911,18 @@ App.InlineSearch = (function () {
     });
     xhr.done(function (response) {
       var results = []
-      if (response.hasOwnProperty('results')) {
+      if (response.hasOwnProperty('count')) {
+        var res = response.results;
+        for (i = 0; i < res.length; i++) {
+          var highlight = res[i].inner_hits[0].highlight;
+          results.push({
+            title: res[i].title,
+            url: res[i].link,
+            contents: highlight["sections.content"],
+            html: highlight["sections.content"][0]
+          })
+        }
+      } else if (response.hasOwnProperty('results')) {
         var res = response.results.hits.hits;
         for (i = 0; i < res.length; i++) {
           results.push({
@@ -1281,7 +1292,21 @@ App.Search = (function () {
     xhr.done(function (response) {
       var results = [], total, page;
       searchResults.empty().append('<ul></ul>');
-      if (response.hasOwnProperty('results')) {
+      if (response.hasOwnProperty('count')) {
+        total = response.count;
+        page = 1;
+
+        var res = response.results;
+        for (i = 0; i < res.length; i++) {
+          var highlight = res[i].inner_hits[0].highlight;
+          results.push({
+            title: res[i].title,
+            url: res[i].link,
+            contents: highlight["sections.content"],
+            html: highlight["sections.content"][0]
+          })
+        }
+      } else if (response.hasOwnProperty('results')) {
         total = response.results.hits.total;
         page = 1;
 
