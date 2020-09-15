@@ -866,7 +866,7 @@ if (/cakephp\.org/.test(document.domain)) {
 
 App = {};
 App.config = {
-  url: 'https://readthedocs.org/api/v2/docsearch/',
+  url: 'https://readthedocs.org/api/v2/search/',
   version: 'latest'
 };
 
@@ -920,11 +920,17 @@ App.InlineSearch = (function () {
       if (response.hasOwnProperty('count')) {
         var res = response.results;
         for (i = 0; i < res.length; i++) {
-          var highlight = res[i].inner_hits[0].highlight;
+          var row = res[i];
+          var highlight = '';
+          if (row.highlight && row.highlight.title) {
+            highlight = row.highlight.title[0]
+          } else if (row.highlight && row.highlight.content) {
+            highlight = row.highlight.content[0]
+          }
           results.push({
-            title: res[i].title,
-            url: res[i].link,
-            contents: App.stripHtml(highlight["sections.content"][0])
+            title: row.title,
+            url: row.link,
+            contents: App.stripHtml(highlight)
           })
         }
       } else if (response.hasOwnProperty('results')) {
@@ -1303,11 +1309,17 @@ App.Search = (function () {
 
         var res = response.results;
         for (i = 0; i < res.length; i++) {
-          var highlight = res[i].inner_hits[0].highlight;
+          var row = res[i];
+          var highlight = '';
+          if (row.highlight && row.highlight.title) {
+            highlight = row.highlight.title[0]
+          } else if (row.highlight && row.highlight.content) {
+            highlight = row.highlight.content[0]
+          }
           results.push({
-            title: res[i].title,
-            url: res[i].link,
-            contents: [App.stripHtml(highlight["sections.content"][0])]
+            title: row.title,
+            url: row.link,
+            contents: [App.stripHtml(highlight)]
           })
         }
       } else if (response.hasOwnProperty('results')) {
